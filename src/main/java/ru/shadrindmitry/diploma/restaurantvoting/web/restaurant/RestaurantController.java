@@ -1,5 +1,6 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web.restaurant;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,13 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/restaurants")
+@AllArgsConstructor
 public class RestaurantController {
-
     protected RestaurantService restaurantService;
-
-    public RestaurantController(RestaurantService restaurantService) {
-        this.restaurantService = restaurantService;
-    }
 
     @GetMapping
     public List<Restaurant> getAll(){

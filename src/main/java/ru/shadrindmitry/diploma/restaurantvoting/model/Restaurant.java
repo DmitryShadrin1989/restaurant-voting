@@ -20,4 +20,8 @@ public class Restaurant extends NamedEntity{
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Position> menu;
 
+    public Restaurant(Integer id, String name, List<Position> menu) {
+        super(id, name);
+        this.menu = menu;
+    }
 }
