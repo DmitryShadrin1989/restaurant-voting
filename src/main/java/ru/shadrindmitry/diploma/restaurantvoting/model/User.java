@@ -13,7 +13,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-//@AllArgsConstructor
 @ToString(callSuper = true, exclude = {"password"})
 public class User extends NamedEntity {
     @Column(name = "email", nullable = false, unique = true)

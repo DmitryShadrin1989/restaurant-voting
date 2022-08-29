@@ -1,20 +1,23 @@
 package ru.shadrindmitry.diploma.restaurantvoting.model;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-//@AllArgsConstructor
 @ToString(callSuper = true)
 public class Restaurant extends NamedEntity{
 
-    public Restaurant(Integer id, String name) {
-        super(id, name);
-    }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")
+    @OrderBy("date DESC")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Position> menu;
+
 }
