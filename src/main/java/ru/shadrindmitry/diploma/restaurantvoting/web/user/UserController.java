@@ -10,9 +10,11 @@ import ru.shadrindmitry.diploma.restaurantvoting.repository.UserRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = UserController.REST_URL)
 @AllArgsConstructor
 public class UserController {
+    static final String REST_URL = "/api/users";
+
     protected UserRepository userRepository;
 
     @GetMapping

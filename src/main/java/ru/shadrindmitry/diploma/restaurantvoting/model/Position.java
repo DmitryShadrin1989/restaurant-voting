@@ -1,6 +1,8 @@
 package ru.shadrindmitry.diploma.restaurantvoting.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,9 +32,12 @@ public class Position extends BaseEntity {
     @Column(name = "position_type")
     private PositionType positionType;
 
+    private Double sum;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
-    @JsonIgnore
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     private Restaurant restaurant;
 
     public Position(Integer id, LocalDate date, String description, Restaurant restaurant) {

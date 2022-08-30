@@ -10,9 +10,11 @@ import ru.shadrindmitry.diploma.restaurantvoting.service.VoteService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/votes")
+@RequestMapping(value = VoteController.REST_URL)
 @AllArgsConstructor
 public class VoteController {
+    static final String REST_URL = "/api/votes";
+
     protected VoteService voteService;
 
     @GetMapping
