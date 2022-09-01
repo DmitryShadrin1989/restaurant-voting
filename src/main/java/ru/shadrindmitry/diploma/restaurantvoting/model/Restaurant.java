@@ -20,9 +20,9 @@ public class Restaurant extends NamedEntity{
     @OrderBy("date DESC")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private List<Position> menu;
+    private List<PositionInMenu> menu;
 
-    public Restaurant(Integer id, String name, List<Position> menu) {
+    public Restaurant(Integer id, String name, List<PositionInMenu> menu) {
         super(id, name);
         this.menu = menu;
     }

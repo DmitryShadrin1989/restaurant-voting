@@ -13,12 +13,12 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "positions")
+@Table(name = "positions_in_menu")
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(callSuper = true)
-public class Position extends BaseEntity {
+public class PositionInMenu extends BaseEntity {
 
     @Column(name = "date", nullable = false)
     @NotNull
@@ -36,7 +36,7 @@ public class Position extends BaseEntity {
 
     @Column(name = "price", nullable = false)
     @NotNull
-    @Range(min = 10, max = 5000)
+    @Range(min = 5, max = 10000)
     private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,7 +45,7 @@ public class Position extends BaseEntity {
     @JsonIdentityReference(alwaysAsId = true)
     private Restaurant restaurant;
 
-    public Position(Integer id, LocalDate date, String description, Restaurant restaurant) {
+    public PositionInMenu(Integer id, LocalDate date, String description, Restaurant restaurant) {
         super(id);
         this.date = date;
         this.description = description;
