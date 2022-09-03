@@ -1,8 +1,6 @@
 package ru.shadrindmitry.diploma.restaurantvoting.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.Range;
 
@@ -41,15 +39,23 @@ public class PositionInMenu extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
     private Restaurant restaurant;
 
-    public PositionInMenu(Integer id, LocalDate date, String description, Restaurant restaurant) {
-        super(id);
+    public PositionInMenu(LocalDate date, String description, PositionType positionType, Double price, Restaurant restaurant) {
         this.date = date;
         this.description = description;
+        this.positionType = positionType;
+        this.price = price;
         this.restaurant = restaurant;
     }
 
+    public PositionInMenu(Integer id, LocalDate date, String description, PositionType positionType, Double price, Restaurant restaurant) {
+        super(id);
+        this.date = date;
+        this.description = description;
+        this.positionType = positionType;
+        this.price = price;
+        this.restaurant = restaurant;
+    }
 }
