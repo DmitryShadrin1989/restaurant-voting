@@ -44,7 +44,7 @@ public class PositionInMenuController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
-        positionInMenuRepository.deleteById(id);
+        positionInMenuRepository.delete(id);
     }
 
     @PutMapping("/{id}")
