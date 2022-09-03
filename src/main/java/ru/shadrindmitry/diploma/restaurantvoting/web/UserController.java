@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.web.user;
+package ru.shadrindmitry.diploma.restaurantvoting.web;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

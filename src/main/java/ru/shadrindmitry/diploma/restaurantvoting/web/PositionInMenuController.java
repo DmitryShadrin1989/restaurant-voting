@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.web.position;
+package ru.shadrindmitry.diploma.restaurantvoting.web;
 
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
