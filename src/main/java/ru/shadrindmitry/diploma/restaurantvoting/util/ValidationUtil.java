@@ -6,6 +6,12 @@ import org.springframework.lang.NonNull;
 import ru.shadrindmitry.diploma.restaurantvoting.HasId;
 import ru.shadrindmitry.diploma.restaurantvoting.error.IllegalRequestDataException;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
+
 @UtilityClass
 public class ValidationUtil {
 
@@ -39,5 +45,18 @@ public class ValidationUtil {
     public static Throwable getRootCause(@NonNull Throwable t) {
         Throwable rootCause = NestedExceptionUtils.getRootCause(t);
         return rootCause != null ? rootCause : t;
+    }
+
+    public static void checkDateAndTimeOfVoting(LocalDate dateVote) {
+        Date date = Calendar.getInstance().getTime();
+        LocalDate currentDate = LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(date));
+        LocalTime currentTime = LocalTime.parse(new SimpleDateFormat("HH:mm:ss").format(date));
+        LocalTime restrictionOfVotingByTime = LocalTime.parse("11:00"); //remove the crutch
+
+        if (dateVote.compareTo(currentDate)<0
+                || (dateVote.compareTo(currentDate)==0
+                && currentTime.compareTo(restrictionOfVotingByTime)>0)) {
+            throw new IllegalRequestDataException("The voting date must be less than 11.00 of the current date");
+        }
     }
 }

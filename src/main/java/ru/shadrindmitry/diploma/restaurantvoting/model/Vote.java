@@ -24,7 +24,7 @@ public class Vote extends BaseEntity {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
@@ -39,6 +39,12 @@ public class Vote extends BaseEntity {
 
     public Vote(Integer id, LocalDate date, User user, Restaurant restaurant) {
         super(id);
+        this.date = date;
+        this.user = user;
+        this.restaurant = restaurant;
+    }
+
+    public Vote(LocalDate date, User user, Restaurant restaurant) {
         this.date = date;
         this.user = user;
         this.restaurant = restaurant;
