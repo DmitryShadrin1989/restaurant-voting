@@ -10,6 +10,7 @@ import ru.shadrindmitry.diploma.restaurantvoting.repository.VoteRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.checkDateAndTimeOfVoting;
 
@@ -44,10 +45,12 @@ public class VoteService {
     }
 
     public List<RestaurantRating> getRestaurantRating(LocalDate date) {
-        if (date != null) {
-            return voteRepository.getRestaurantRatingOnDate(date);
-        } else {
-            return voteRepository.getRestaurantRatingAll();
-        }
+        List<Vote> votes = (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
+        return votes.stream()
+                .collect(
+                        Collectors.groupingBy(Vote::getRestaurant, Collectors.summingInt(Vote -> 1)))
+                .entrySet().stream()
+                .map(map-> new RestaurantRating(map.getKey(), map.getValue()))
+                .collect(Collectors.toList());
     }
 }

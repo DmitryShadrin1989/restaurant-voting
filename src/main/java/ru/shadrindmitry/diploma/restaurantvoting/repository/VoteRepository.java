@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
-import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
 
 import java.time.LocalDate;
@@ -22,10 +21,4 @@ public interface VoteRepository extends JpaRepository<Vote, Integer> {
     @Modifying
     @Query("DELETE FROM Vote v WHERE v.date = :date AND v.user.id = :userId")
     void deleteVoteOnDate(LocalDate date, int userId);
-
-    @Query("")
-    List<RestaurantRating> getRestaurantRatingOnDate(LocalDate date);
-
-    @Query("")
-    List<RestaurantRating> getRestaurantRatingAll();
 }
