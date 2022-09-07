@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Restaurant;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository;
-import ru.shadrindmitry.diploma.restaurantvoting.service.RestaurantService;
 
 import java.net.URI;
 import java.util.List;
@@ -20,8 +19,6 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.chec
 @AllArgsConstructor
 public class RestaurantController {
     static final String REST_URL = "/api/restaurants";
-
-    protected RestaurantService restaurantService;
 
     protected RestaurantRepository restaurantRepository;
 

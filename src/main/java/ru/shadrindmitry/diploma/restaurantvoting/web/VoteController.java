@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
-import ru.shadrindmitry.diploma.restaurantvoting.repository.VoteRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.service.VoteService;
 import ru.shadrindmitry.diploma.restaurantvoting.to.VoteTo;
 import ru.shadrindmitry.diploma.restaurantvoting.util.VoteUtil;
@@ -24,8 +23,6 @@ public class VoteController {
     static final String REST_URL = "/api/votes";
 
     protected VoteService voteService;
-
-    protected VoteRepository voteRepository;
 
     @GetMapping
     public List<VoteTo> getAll(@RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {

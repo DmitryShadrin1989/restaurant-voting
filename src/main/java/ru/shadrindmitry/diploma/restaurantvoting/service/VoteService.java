@@ -24,19 +24,14 @@ public class VoteService {
     protected RestaurantRepository restaurantRepository;
 
     public List<Vote> getAll(LocalDate date) {
-        if (date != null) {
-            return voteRepository.getAllOnDate(date);
-        } else {
-            return voteRepository.getAll();
-        }
+        return (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
     }
 
     public Vote createUpdate(LocalDate date, int userId, int restaurantId) {
         checkDateAndTimeOfVoting(date);
-        Vote vote  = new Vote(date,
+       return voteRepository.save(new Vote(date,
                userRepository.getExisted(userId),
-               restaurantRepository.getExisted(restaurantId));
-       return voteRepository.save(vote);
+               restaurantRepository.getExisted(restaurantId)));
     }
 
     public void deleteVoteOnDate(LocalDate date, int userId) {
@@ -50,7 +45,7 @@ public class VoteService {
                 .collect(
                         Collectors.groupingBy(Vote::getRestaurant, Collectors.summingInt(Vote -> 1)))
                 .entrySet().stream()
-                .map(map-> new RestaurantRating(map.getKey(), map.getValue()))
+                .map(restaurantMap-> new RestaurantRating(restaurantMap.getKey(), restaurantMap.getValue()))
                 .collect(Collectors.toList());
     }
 }
