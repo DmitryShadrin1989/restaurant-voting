@@ -1,6 +1,7 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.chec
 
 @RestController
 @RequestMapping(value = RestaurantController.REST_URL)
+@Slf4j
 @AllArgsConstructor
 public class RestaurantController {
     static final String REST_URL = "/api/restaurants";
@@ -24,24 +26,34 @@ public class RestaurantController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Restaurant> get(@PathVariable int id) {
+        log.info("get Restaurant {}", id);
         return ResponseEntity.of(restaurantRepository.findById(id));
+    }
+
+    @GetMapping
+    public List<Restaurant> getAll(){
+        log.info("getAll Restaurants");
+        return restaurantRepository.findAll();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
+        log.info("delete Restaurant {}", id);
         restaurantRepository.delete(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable int id, @RequestBody Restaurant restaurant) {
+        log.info("update Restaurant {}", id);
         assureIdConsistent(restaurant, id);
         restaurantRepository.save(restaurant);
     }
 
     @PostMapping
     public ResponseEntity<Restaurant> create(@RequestBody Restaurant restaurant) {
+        log.info("create Restaurant");
         checkNew(restaurant);
         Restaurant created = restaurantRepository.save(restaurant);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -50,8 +62,5 @@ public class RestaurantController {
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    @GetMapping
-    public List<Restaurant> getAll(){
-        return restaurantRepository.findAll();
-    }
+
 }

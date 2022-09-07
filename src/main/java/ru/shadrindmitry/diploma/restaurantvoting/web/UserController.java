@@ -1,6 +1,7 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,6 +21,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.chec
 
 @RestController
 @RequestMapping(value = UserController.REST_URL)
+@Slf4j
 @AllArgsConstructor
 public class UserController {
     static final String REST_URL = "/api/users";
@@ -28,29 +30,34 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<User> get(@PathVariable int id) {
+        log.info("get User {}", id);
         return  ResponseEntity.of(userRepository.findById(id));
     }
 
     @GetMapping
     public List<User> getAll() {
+        log.info("getAll Users");
         return userRepository.findAll(Sort.by(Sort.Direction.ASC, "name", "email"));
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
+        log.info("delete User {}", id);
         userRepository.deleteExisted(id);
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@Valid @RequestBody User user, @PathVariable int id) {
+        log.info("update User {}", id);
         assureIdConsistent(user, id);
         prepareAndSave(user);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> createWithLocation(@Valid @RequestBody User user) {
+        log.info("createWithLocation User");
         checkNew(user);
         User created = prepareAndSave(user);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -62,5 +69,4 @@ public class UserController {
     protected User prepareAndSave(User user) {
         return userRepository.save(UserUtil.prepareToSave(user));
     }
-
 }

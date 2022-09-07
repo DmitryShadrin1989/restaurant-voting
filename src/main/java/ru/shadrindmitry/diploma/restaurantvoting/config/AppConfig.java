@@ -16,5 +16,4 @@ public class AppConfig {
         log.info("Start H2 TCP server");
         return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092");
     }
-
 }

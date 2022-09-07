@@ -1,6 +1,7 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = VoteController.REST_URL)
+@Slf4j
 @AllArgsConstructor
 public class VoteController {
     static final String REST_URL = "/api/votes";
@@ -26,17 +28,20 @@ public class VoteController {
 
     @GetMapping
     public List<VoteTo> getAll(@RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        log.info("getAll Votes on date {}", date);
         return VoteUtil.getTos(voteService.getAll(date));
     }
 
     @GetMapping("/rating")
     public List<RestaurantRating> getRestaurantRating(@RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        log.info("getRestaurantRating on date {}", date);
         return voteService.getRestaurantRating(date);
     }
 
     @DeleteMapping
     public void delete(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
                        @RequestParam int userId) {
+        log.info("delete Vote from User {} on date {}", userId, date);
         voteService.deleteVoteOnDate(date, userId);
     }
 
@@ -45,6 +50,7 @@ public class VoteController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
             @RequestParam int userId,
             @RequestParam int restaurantId) {
+        log.info("createUpdate Vote from User {} on date {}", userId, date);
         Vote created = voteService.createUpdate(date, userId, restaurantId);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")

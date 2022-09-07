@@ -1,6 +1,7 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.chec
 
 @RestController
 @RequestMapping(value = PositionInMenuController.REST_URL)
+@Slf4j
 @AllArgsConstructor
 public class PositionInMenuController {
     static final String REST_URL = "/api/menu";
@@ -32,18 +34,21 @@ public class PositionInMenuController {
 
     @GetMapping("{id}")
     public PositionInMenuTo get(@PathVariable int id) {
+        log.info("get PositionInMenu {}", id);
         return createTo(positionInMenuRepository.getExisted(id));
     }
 
     @GetMapping
     public List<PositionInMenuTo> getRestaurantMenu(@RequestParam int restaurant_id,
                                     @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        log.info("getAll PositionInMenu for Restaurant {} on date {}", restaurant_id, date);
         return getTos(positionInMenuService.getRestaurantMenu(restaurant_id, date));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
+        log.info("delete PositionInMenu {}", id);
         positionInMenuRepository.delete(id);
     }
 
@@ -51,6 +56,7 @@ public class PositionInMenuController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable int id,
                        @RequestBody PositionInMenuTo positionInMenuTo) {
+        log.info("update PositionInMenu {}", id);
         assureIdConsistent(positionInMenuTo, id);
         positionInMenuService.update(positionInMenuTo, id);
     }
@@ -58,6 +64,7 @@ public class PositionInMenuController {
     @PostMapping
     public ResponseEntity<PositionInMenu> create(@RequestParam int restaurant_id,
                                                  @RequestBody PositionInMenuTo positionInMenuTo) {
+        log.info("create PositionInMenu for Restaurant {}", restaurant_id);
         checkNew(positionInMenuTo);
         PositionInMenu created = positionInMenuService.create(positionInMenuTo, restaurant_id);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -65,5 +72,4 @@ public class PositionInMenuController {
                 .buildAndExpand(created.getId()).toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
-
 }
