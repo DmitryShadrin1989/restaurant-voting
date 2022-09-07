@@ -24,7 +24,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.chec
 @Slf4j
 @AllArgsConstructor
 public class UserController {
-    static final String REST_URL = "/api/users";
+    static final String REST_URL = "/api/admin/users";
 
     protected UserRepository userRepository;
 

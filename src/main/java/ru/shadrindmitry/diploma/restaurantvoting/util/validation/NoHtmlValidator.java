@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.util;
+package ru.shadrindmitry.diploma.restaurantvoting.util.validation;
 
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;

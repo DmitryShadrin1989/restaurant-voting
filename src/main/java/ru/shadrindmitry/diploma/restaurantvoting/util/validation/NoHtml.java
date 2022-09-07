@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.util;
+package ru.shadrindmitry.diploma.restaurantvoting.util.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

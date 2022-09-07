@@ -3,7 +3,7 @@ package ru.shadrindmitry.diploma.restaurantvoting.to;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import ru.shadrindmitry.diploma.restaurantvoting.HasIdAndEmail;
-import ru.shadrindmitry.diploma.restaurantvoting.util.NoHtml;
+import ru.shadrindmitry.diploma.restaurantvoting.util.validation.NoHtml;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
