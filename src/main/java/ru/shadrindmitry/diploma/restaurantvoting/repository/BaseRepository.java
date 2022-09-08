@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.transaction.annotation.Transactional;
 
-import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.checkExisted;
-import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.checkModification;
+import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.checkExisted;
+import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.checkModification;
 
 @NoRepositoryBean
 public interface BaseRepository<T> extends JpaRepository<T, Integer> {

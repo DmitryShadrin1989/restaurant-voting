@@ -15,7 +15,7 @@ VALUES ('Печки-лавочки'),
        ('Дрова-мука');
 
 INSERT INTO POSITIONS_IN_MENU (DATE, DESCRIPTION, POSITION_TYPE, PRICE, RESTAURANT_ID)
-VALUES ('2022-01-01', 'Венегрет', 'LUNCH', 150, 1),
+VALUES ('2022-01-01', 'Винегрет', 'LUNCH', 150, 1),
        ('2022-01-01', 'Борщ', 'LUNCH', 200,  1),
        ('2022-01-01', 'Картофельное пюре', 'LUNCH', 130, 1),
        ('2022-01-01', 'Котлета по Киевски', 'LUNCH', 190, 1),

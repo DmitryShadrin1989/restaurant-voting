@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.web;
+package ru.shadrindmitry.diploma.restaurantvoting.web.positionInMenu;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +19,8 @@ import java.util.List;
 
 import static ru.shadrindmitry.diploma.restaurantvoting.util.PositionInMenuUtil.createTo;
 import static ru.shadrindmitry.diploma.restaurantvoting.util.PositionInMenuUtil.getTos;
-import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.assureIdConsistent;
-import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.checkNew;
+import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.assureIdConsistent;
+import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.checkNew;
 
 @RestController
 @RequestMapping(value = PositionInMenuController.REST_URL)

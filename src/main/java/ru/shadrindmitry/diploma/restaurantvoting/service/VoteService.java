@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.checkDateAndTimeOfVoting;
+import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.checkDateAndTimeOfVoting;
 
 @Service
 @AllArgsConstructor

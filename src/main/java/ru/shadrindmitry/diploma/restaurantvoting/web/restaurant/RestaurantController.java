@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.web;
+package ru.shadrindmitry.diploma.restaurantvoting.web.restaurant;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,8 +12,9 @@ import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository
 import java.net.URI;
 import java.util.List;
 
-import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.assureIdConsistent;
-import static ru.shadrindmitry.diploma.restaurantvoting.util.ValidationUtil.checkNew;
+import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.assureIdConsistent;
+import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.checkNew;
+
 
 @RestController
 @RequestMapping(value = RestaurantController.REST_URL)
