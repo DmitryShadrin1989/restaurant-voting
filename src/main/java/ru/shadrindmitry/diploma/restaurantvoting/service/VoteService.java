@@ -23,8 +23,8 @@ public class VoteService {
 
     protected RestaurantRepository restaurantRepository;
 
-    public List<Vote> getAll(LocalDate date) {
-        return (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
+    public List<Vote> getUserVotes(int userId, LocalDate date) {
+        return (date != null)?voteRepository.getUserVoteOnDate(userId, date):voteRepository.getAllUserVotes(userId);
     }
 
     public Vote createUpdate(LocalDate date, int userId, int restaurantId) {

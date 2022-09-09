@@ -12,13 +12,19 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface VoteRepository extends JpaRepository<Vote, Integer> {
 
-    @Query("SELECT v FROM Vote v ORDER BY v.date DESC")
-    List<Vote> getAll();
+    @Query("SELECT v FROM Vote v WHERE v.user.id = :userId ORDER BY v.date DESC")
+    List<Vote> getAllUserVotes(int userId);
 
-    @Query("SELECT v FROM Vote v WHERE v.date = :date ORDER BY v.date DESC")
-    List<Vote> getAllOnDate(LocalDate date);
+    @Query("SELECT v FROM Vote v WHERE v.user.id = :userId AND v.date = :date ORDER BY v.date DESC")
+    List<Vote> getUserVoteOnDate(int userId, LocalDate date);
 
     @Modifying
     @Query("DELETE FROM Vote v WHERE v.date = :date AND v.user.id = :userId")
     void deleteVoteOnDate(LocalDate date, int userId);
+
+    @Query("SELECT v FROM Vote v WHERE v.date = :date ORDER BY v.date DESC")
+    List<Vote> getAllOnDate(LocalDate date);
+
+    @Query("SELECT v FROM Vote v ORDER BY v.date DESC")
+    List<Vote> getAll();
 }
