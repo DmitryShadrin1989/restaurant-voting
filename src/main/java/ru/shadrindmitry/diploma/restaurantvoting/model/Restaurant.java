@@ -26,4 +26,8 @@ public class Restaurant extends NamedEntity{
         super(id, name);
         this.menu = menu;
     }
+
+    public Restaurant(Integer id, String name) {
+        super(id, name);
+    }
 }
