@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import ru.shadrindmitry.diploma.restaurantvoting.repository.VoteRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.service.VoteService;
 import ru.shadrindmitry.diploma.restaurantvoting.web.AbstractControllerTest;
 
@@ -24,8 +23,6 @@ public class VoteControllerTest extends AbstractControllerTest {
 
     @Autowired
     private VoteService voteService;
-    @Autowired
-    private VoteRepository voteRepository;
 
     @Test
     @WithUserDetails(value = USER1_MAIL)
