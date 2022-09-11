@@ -18,7 +18,7 @@ public class PositionInMenuUtil {
 
     public static List<PositionInMenuTo> getTos(Collection<PositionInMenu> positionInMenuCollection) {
         return positionInMenuCollection.stream()
-                .map(positionInMenu -> createTo(positionInMenu))
+                .map(PositionInMenuUtil::createTo)
                 .collect(Collectors.toList());
     }
 
@@ -30,5 +30,12 @@ public class PositionInMenuUtil {
                 positionInMenu.getPrice());
     }
 
-
+    public static PositionInMenu createFromTo(PositionInMenuTo positionInMenuTo) {
+        return new PositionInMenu(positionInMenuTo.id(),
+                positionInMenuTo.getDate(),
+                positionInMenuTo.getDescription(),
+                positionInMenuTo.getPositionType(),
+                positionInMenuTo.getPrice(),
+                null);
+    }
 }
