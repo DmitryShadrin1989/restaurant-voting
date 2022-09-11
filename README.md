@@ -50,9 +50,9 @@ Password: "password1" (user role)
 Password: "password2" (user role)
 3) Username: user3@yandex.ru
 Password: "password3" (user role)
-4) User Name: admin@gmail.com
+4) Username: admin@gmail.com
 Password: "admin" (administrator role)
-5) User Name: guest@yandex.ru
+5) Username: guest@yandex.ru
 Password: "guest" (guest role)
 
 ## Curl Commands
