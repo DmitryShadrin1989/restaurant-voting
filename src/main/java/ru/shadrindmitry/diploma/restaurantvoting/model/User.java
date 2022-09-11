@@ -35,7 +35,8 @@ public class User extends NamedEntity implements HasIdAndEmail, Serializable {
     @NoHtml
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
+    @NotBlank
     @Size(max = 256)
     private String password;
 
@@ -46,9 +47,13 @@ public class User extends NamedEntity implements HasIdAndEmail, Serializable {
                     name = "user_roles_unique")})
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
-    @JoinColumn
+    @JoinColumn(name = "user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Role> roles;
+
+    public User(User u) {
+        this(u.id, u.name, u.email, u.password, u.roles);
+    }
 
     public User(Integer id, String name, String email, String password,  Role... roles) {
         this(id, name, email, password, Arrays.asList(roles));

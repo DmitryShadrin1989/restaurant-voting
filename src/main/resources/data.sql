@@ -2,12 +2,15 @@ INSERT INTO USERS (EMAIL, NAME, PASSWORD)
 VALUES ('user1@gmail.com', 'User1', '{noop}password1'),
        ('user2@gmail.com', 'User2', '{noop}password2'),
        ('user3@gmail.com', 'User3', '{noop}password3'),
-       ('admin@gmail.com', 'Admin', '{noop}admin');
+       ('admin@gmail.com', 'Admin', '{noop}admin'),
+       ('guest@gmail.com', 'Guest', '{noop}guest');
 
 INSERT INTO USER_ROLE (ROLE, USER_ID)
 VALUES ('USER', 1),
+       ('USER', 2),
+       ('USER', 3),
        ('ADMIN', 4),
-       ('USER', 2);
+       ('USER', 4);
 
 INSERT INTO RESTAURANTS (NAME)
 VALUES ('Печки-лавочки'),
@@ -59,8 +62,7 @@ VALUES ('2022-01-01', 1, 1),
 
        ('2022-01-02', 1, 1),
        ('2022-01-01', 2, 1),
-       ('2022-01-01', 3, 3)
-       ;
+       ('2022-01-01', 3, 3);
 
 
 

@@ -1,6 +1,7 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web.user;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.Validati
 @RestController
 @RequestMapping(value = AdminUserController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
+@CacheConfig(cacheNames = "users")
 public class AdminUserController extends AbstractUserController {
 
     static final String REST_URL = "/api/admin/users";
