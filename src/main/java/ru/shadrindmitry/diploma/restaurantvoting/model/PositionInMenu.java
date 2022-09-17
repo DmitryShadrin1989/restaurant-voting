@@ -11,14 +11,14 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "positions_in_menu")
+@Table(name = "menu_item")
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(callSuper = true)
 public class PositionInMenu extends BaseEntity {
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date_menu_item", nullable = false)
     @NotNull
     private LocalDate date;
 

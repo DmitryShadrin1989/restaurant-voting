@@ -19,9 +19,9 @@ import java.time.LocalDate;
 @ToString(callSuper = true)
 public class Vote extends BaseEntity {
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date_vote", nullable = false)
     @NotNull
-    private LocalDate date;
+    private LocalDate dateVote;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -37,15 +37,15 @@ public class Vote extends BaseEntity {
     @JsonIdentityReference(alwaysAsId = true)
     private Restaurant restaurant;
 
-    public Vote(Integer id, LocalDate date, User user, Restaurant restaurant) {
+    public Vote(Integer id, LocalDate dateVote, User user, Restaurant restaurant) {
         super(id);
-        this.date = date;
+        this.dateVote = dateVote;
         this.user = user;
         this.restaurant = restaurant;
     }
 
-    public Vote(LocalDate date, User user, Restaurant restaurant) {
-        this.date = date;
+    public Vote(LocalDate dateVote, User user, Restaurant restaurant) {
+        this.dateVote = dateVote;
         this.user = user;
         this.restaurant = restaurant;
     }

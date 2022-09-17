@@ -44,7 +44,7 @@ public class RestaurantService {
         List<Vote> votes = (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
         Map<LocalDate, List<Vote>> dateListMap = votes.stream()
                 .collect(
-                        Collectors.groupingBy(Vote::getDate));
+                        Collectors.groupingBy(Vote::getDateVote));
 
         Map<LocalDate, List<RestaurantRating>> result  = new HashMap<>();
         for (Map.Entry<LocalDate, List<Vote>> entry: dateListMap.entrySet()) {

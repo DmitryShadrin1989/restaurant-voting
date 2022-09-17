@@ -17,7 +17,7 @@ VALUES ('Печки-лавочки'),
        ('Суши-терра'),
        ('Дрова-мука');
 
-INSERT INTO POSITIONS_IN_MENU (DATE, DESCRIPTION, POSITION_TYPE, PRICE, RESTAURANT_ID)
+INSERT INTO MENU_ITEM (DATE_MENU_ITEM, DESCRIPTION, POSITION_TYPE, PRICE, RESTAURANT_ID)
 VALUES ('2022-01-01', 'Винегрет', 'LUNCH', 150, 1),
        ('2022-01-01', 'Борщ', 'LUNCH', 200,  1),
        ('2022-01-01', 'Картофельное пюре', 'LUNCH', 130, 1),
@@ -55,7 +55,7 @@ VALUES ('2022-01-01', 'Винегрет', 'LUNCH', 150, 1),
        ('2022-01-02', 'Компот', 'LUNCH', 30, 3)
       ;
 
-INSERT INTO VOTES (DATE, USER_ID, RESTAURANT_ID)
+INSERT INTO VOTES (DATE_VOTE, USER_ID, RESTAURANT_ID)
 VALUES ('2022-01-01', 1, 1),
        ('2022-01-01', 2, 2),
        ('2022-01-01', 3, 2),
