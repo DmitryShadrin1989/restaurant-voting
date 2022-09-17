@@ -2,7 +2,7 @@ INSERT INTO USERS (EMAIL, NAME, PASSWORD)
 VALUES ('user1@gmail.com', 'User1', '{noop}password1'),
        ('user2@gmail.com', 'User2', '{noop}password2'),
        ('user3@gmail.com', 'User3', '{noop}password3'),
-       ('admin@gmail.com', 'Admin', '{noop}admin'),
+       ('admin@gmail.com', 'admin', '{noop}admin'),
        ('guest@gmail.com', 'Guest', '{noop}guest');
 
 INSERT INTO USER_ROLE (ROLE, USER_ID)
