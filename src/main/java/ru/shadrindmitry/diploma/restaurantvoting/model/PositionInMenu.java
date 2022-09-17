@@ -2,7 +2,6 @@ package ru.shadrindmitry.diploma.restaurantvoting.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -34,7 +33,6 @@ public class PositionInMenu extends BaseEntity {
 
     @Column(name = "price", nullable = false)
     @NotNull
-    @Range(min = 5, max = 10000)
     private Double price;
 
     @ManyToOne(fetch = FetchType.EAGER)
