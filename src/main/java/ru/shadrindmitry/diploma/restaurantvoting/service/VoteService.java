@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.shadrindmitry.diploma.restaurantvoting.error.IllegalRequestDataException;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Restaurant;
-import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.UserRepository;
@@ -13,7 +12,6 @@ import ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -26,16 +24,6 @@ public class VoteService {
 
     public List<Vote> getUserVotes(int userId, LocalDate date) {
         return (date != null)?voteRepository.getUserVoteOnDate(userId, date):voteRepository.getAllUserVotes(userId);
-    }
-
-    public List<RestaurantRating> getRestaurantRating(LocalDate date) {
-        List<Vote> votes = (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
-        return votes.stream()
-                .collect(
-                        Collectors.groupingBy(Vote::getRestaurant, Collectors.summingInt(Vote -> 1)))
-                .entrySet().stream()
-                .map(restaurantMap-> new RestaurantRating(restaurantMap.getKey(), restaurantMap.getValue()))
-                .collect(Collectors.toList());
     }
 
     public Vote create(int userId, int restaurantId) {

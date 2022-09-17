@@ -8,7 +8,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
 import ru.shadrindmitry.diploma.restaurantvoting.service.VoteService;
 import ru.shadrindmitry.diploma.restaurantvoting.to.VoteTo;
@@ -33,13 +32,6 @@ public class VoteController {
             @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         log.info("getAll Votes on date {}", date);
         return VoteUtil.getTos(voteService.getUserVotes(authUser.id(), date));
-    }
-
-    @GetMapping("/rating")
-    public List<RestaurantRating> getRestaurantRating(
-            @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        log.info("getRestaurantRating on date {}", date);
-        return voteService.getRestaurantRating(date);
     }
 
     @PostMapping

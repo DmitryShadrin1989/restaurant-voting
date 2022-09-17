@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Restaurant;
+import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.to.RestaurantTo;
 
 import java.time.LocalDate;
@@ -42,6 +43,13 @@ public class UserRestaurantController extends AbstractRestaurantController {
     public List<Restaurant> getAll(){
         log.info("getAll Restaurants");
         return repository.findAll();
+    }
+
+    @GetMapping("/rating")
+    public Map<LocalDate, List<RestaurantRating>> getRestaurantRating(
+            @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        log.info("getRestaurantRating on date {}", date);
+        return service.getRestaurantRating(date);
     }
 
 }
