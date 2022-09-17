@@ -3,7 +3,6 @@ package ru.shadrindmitry.diploma.restaurantvoting.web.vote;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -43,28 +42,26 @@ public class VoteController {
         return voteService.getRestaurantRating(date);
     }
 
-    @DeleteMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(
-            @AuthenticationPrincipal AuthUser authUser,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
-        int userId = authUser.id();
-        log.info("delete Vote from User {} on date {}", userId, date);
-        voteService.deleteVoteOnDate(date, userId);
-    }
-
     @PostMapping
-    public ResponseEntity<Vote> createUpdate(
+    public ResponseEntity<Vote> create(
             @AuthenticationPrincipal AuthUser authUser,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
             @RequestParam int restaurantId) {
         int userId = authUser.id();
-        log.info("createUpdate Vote from User {} on date {}", userId, date);
-        Vote created = voteService.createUpdate(date, userId, restaurantId);
+        log.info("create Vote from User {} for a Restaurant {}", userId, restaurantId);
+        Vote created = voteService.create(userId, restaurantId);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
+    }
+
+    @PutMapping
+    public void update(
+            @AuthenticationPrincipal AuthUser authUser,
+            @RequestParam int restaurantId) {
+        int userId = authUser.id();
+        log.info("create Vote from User {} for a Restaurant {}", userId, restaurantId);
+        voteService.prepareAndSave(userId, restaurantId);
     }
 
 }

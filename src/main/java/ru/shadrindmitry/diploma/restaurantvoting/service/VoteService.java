@@ -2,17 +2,18 @@ package ru.shadrindmitry.diploma.restaurantvoting.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.shadrindmitry.diploma.restaurantvoting.error.IllegalRequestDataException;
+import ru.shadrindmitry.diploma.restaurantvoting.model.Restaurant;
 import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.UserRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.VoteRepository;
+import ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.checkDateAndTimeOfVoting;
 
 @Service
 @AllArgsConstructor
@@ -27,18 +28,6 @@ public class VoteService {
         return (date != null)?voteRepository.getUserVoteOnDate(userId, date):voteRepository.getAllUserVotes(userId);
     }
 
-    public Vote createUpdate(LocalDate date, int userId, int restaurantId) {
-        checkDateAndTimeOfVoting(date);
-       return voteRepository.save(new Vote(date,
-               userRepository.getExisted(userId),
-               restaurantRepository.getExisted(restaurantId)));
-    }
-
-    public void deleteVoteOnDate(LocalDate date, int userId) {
-        checkDateAndTimeOfVoting(date);
-        voteRepository.deleteVoteOnDate(date, userId);
-    }
-
     public List<RestaurantRating> getRestaurantRating(LocalDate date) {
         List<Vote> votes = (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
         return votes.stream()
@@ -47,5 +36,31 @@ public class VoteService {
                 .entrySet().stream()
                 .map(restaurantMap-> new RestaurantRating(restaurantMap.getKey(), restaurantMap.getValue()))
                 .collect(Collectors.toList());
+    }
+
+    public Vote create(int userId, int restaurantId) {
+        LocalDate today = LocalDate.now();
+        if (!voteRepository.getUserVoteOnDate(userId, today).isEmpty()) {
+            throw new IllegalRequestDataException("Today, a user with id =" + userId + " has already spoken");
+        }
+        return voteRepository.save(new Vote(today,
+                userRepository.getExisted(userId),
+                restaurantRepository.getExisted(restaurantId)));
+    }
+
+    public void prepareAndSave(int userId, int restaurantId) {
+        ValidationUtil.checkTimeOfVoting();
+        LocalDate today = LocalDate.now();
+        List<Vote> votes = voteRepository.getUserVoteOnDate(userId, today);
+        Restaurant restaurant = restaurantRepository.getExisted(restaurantId);
+        if (!votes.isEmpty()) {
+            Vote vote  = votes.get(0);
+            vote.setRestaurant(restaurant);
+            voteRepository.save(vote);
+        } else {
+            voteRepository.save(new Vote(today,
+                    userRepository.getExisted(userId),
+                    restaurant));
+        }
     }
 }

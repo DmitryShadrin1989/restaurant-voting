@@ -1,7 +1,6 @@
 package ru.shadrindmitry.diploma.restaurantvoting.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
@@ -15,12 +14,8 @@ public interface VoteRepository extends JpaRepository<Vote, Integer> {
     @Query("SELECT v FROM Vote v WHERE v.user.id = :userId ORDER BY v.date DESC")
     List<Vote> getAllUserVotes(int userId);
 
-    @Query("SELECT v FROM Vote v WHERE v.user.id = :userId AND v.date = :date ORDER BY v.date DESC")
+    @Query("SELECT v FROM Vote v WHERE v.user.id = :userId AND v.date = :date")
     List<Vote> getUserVoteOnDate(int userId, LocalDate date);
-
-    @Modifying
-    @Query("DELETE FROM Vote v WHERE v.date = :date AND v.user.id = :userId")
-    void deleteVoteOnDate(LocalDate date, int userId);
 
     @Query("SELECT v FROM Vote v WHERE v.date = :date ORDER BY v.date DESC")
     List<Vote> getAllOnDate(LocalDate date);
