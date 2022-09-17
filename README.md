@@ -44,15 +44,15 @@ Registered users can:
 - Vote for the restaurant and cancel/change their vote before 11:00 am of the current day.
 
 Built-in accounts in the app:
-1) Username: user1@gmail.com
+1) Username: user1@yandex.ru
 Password: "password1" (user role)
-2) Username: user2@gmail.com
+2) Username: user2@yandex.ru
 Password: "password2" (user role)
-3) Username: user3@gmail.com
+3) Username: user3@yandex.ru
 Password: "password3" (user role)
-4) User Name: admin@gmail.com
+4) Username: admin@gmail.com
 Password: "admin" (administrator role)
-5) User Name: guest@gmail.com
+5) Username: guest@yandex.ru
 Password: "guest" (guest role)
 
 ## Curl Commands
