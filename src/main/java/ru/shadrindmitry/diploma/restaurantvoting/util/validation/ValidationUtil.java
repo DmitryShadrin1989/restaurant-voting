@@ -10,6 +10,7 @@ import java.time.LocalTime;
 
 @UtilityClass
 public class ValidationUtil {
+    public static final LocalTime restrictionOfVotingByTime = LocalTime.parse("11:00");
 
     public static void checkNew(HasId bean) {
         if (!bean.isNew()) {
@@ -17,7 +18,6 @@ public class ValidationUtil {
         }
     }
 
-    //  Conservative when you reply, but accept liberally (http://stackoverflow.com/a/32728226/548473)
     public static void assureIdConsistent(HasId bean, int id) {
         if (bean.isNew()) {
             bean.setId(id);
@@ -45,8 +45,8 @@ public class ValidationUtil {
     }
 
     public static void checkTimeOfVoting() {
-        if(LocalTime.now().compareTo(LocalTime.parse("11:00"))>0) {
-            throw new IllegalRequestDataException("You can change your voice before 11.00");
+        if(LocalTime.now().isAfter(restrictionOfVotingByTime)) {
+            throw new IllegalRequestDataException("You can change your voice before " + restrictionOfVotingByTime);
         }
     }
 }
