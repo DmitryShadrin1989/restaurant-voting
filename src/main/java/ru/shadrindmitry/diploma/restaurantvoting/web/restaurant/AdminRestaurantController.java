@@ -8,7 +8,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Restaurant;
 
 import java.net.URI;
-import java.util.List;
 
 import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.assureIdConsistent;
 import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.ValidationUtil.checkNew;
@@ -19,16 +18,6 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.Validati
 public class AdminRestaurantController extends AbstractRestaurantController {
 
     static final String REST_URL = "/api/admin/restaurants";
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Restaurant> get(@PathVariable int id) {
-       return super.get(id);
-    }
-
-    @GetMapping
-    public List<Restaurant> getAll(){
-        return super.getAll();
-    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -10,9 +10,10 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface PositionInMenuRepository extends BaseRepository<PositionInMenu> {
 
-    @Query("SELECT p FROM PositionInMenu p WHERE p.restaurant.id = :restaurant_id ORDER BY p.date DESC")
-    List<PositionInMenu> getAllRestaurantMenu(int restaurant_id);
-
     @Query("SELECT p FROM PositionInMenu p WHERE p.restaurant.id = :restaurant_id AND p.date = :date")
-    List<PositionInMenu> getRestaurantMenuOnDate(int restaurant_id, LocalDate date);
+    List<PositionInMenu> getRestaurantMenuItems(int restaurant_id, LocalDate date);
+
+    @Query("SELECT p FROM PositionInMenu p WHERE p.date = :date")
+    List<PositionInMenu> getAllRestaurantMenuItems(LocalDate date);
+
 }

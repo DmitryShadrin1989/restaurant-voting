@@ -24,9 +24,9 @@ import org.springframework.context.annotation.Configuration;
                         Приложение для голосования за рестораны
                         <p><b>Тестовые креденшелы:</b><br>
                         - admin@gmail.com / admin<br>
-                        - user1@yandex.ru / password1<br>
-                        - user2@yandex.ru / password2<br>
-                        - user3@yandex.ru / password3<br>
+                        - user1@gmail.com / password1<br>
+                        - user2@gmail.com / password2<br>
+                        - user3@gmail.com / password3<br>
                         - guest@gmail.com / guest</p>
                         """,
                 contact = @Contact(name = "Shadrin Dmitry", email = "dmitry.shadrin.alex1989@gmail.com")

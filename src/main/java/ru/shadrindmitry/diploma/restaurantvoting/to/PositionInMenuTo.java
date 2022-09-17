@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 public class PositionInMenuTo extends BaseTo {
 
+    //@JsonIgnore
     LocalDate date;
 
     String description;
@@ -18,7 +19,10 @@ public class PositionInMenuTo extends BaseTo {
 
     Double price;
 
-    public PositionInMenuTo(Integer id, LocalDate date, String description, PositionType positionType, Double price) {
+
+
+    public PositionInMenuTo(Integer id, LocalDate date, String description,
+                            PositionType positionType, Double price) {
         super(id);
         this.date = date;
         this.description = description;

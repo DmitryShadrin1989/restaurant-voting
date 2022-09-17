@@ -37,7 +37,7 @@ public class PositionInMenu extends BaseEntity {
     @Range(min = 5, max = 10000)
     private Double price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurant_id", nullable = false)
     @JsonIgnore
     private Restaurant restaurant;
