@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 public class VoteController {
     static final String REST_URL = "/api/votes";
-    protected VoteService voteService;
+    private final VoteService voteService;
 
     @GetMapping
     public List<VoteTo> getUserVotes(

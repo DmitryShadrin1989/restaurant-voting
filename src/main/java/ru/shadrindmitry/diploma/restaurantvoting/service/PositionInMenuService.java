@@ -11,9 +11,8 @@ import ru.shadrindmitry.diploma.restaurantvoting.util.PositionInMenuUtil;
 @AllArgsConstructor
 public class PositionInMenuService {
 
-    protected PositionInMenuRepository positionInMenuRepository;
-
-    protected RestaurantRepository restaurantRepository;
+    protected final PositionInMenuRepository positionInMenuRepository;
+    protected final RestaurantRepository restaurantRepository;
 
     public void update(PositionInMenu updatePositionInMenu, int id) {
         PositionInMenu positionInMenu = positionInMenuRepository.getExisted(id);

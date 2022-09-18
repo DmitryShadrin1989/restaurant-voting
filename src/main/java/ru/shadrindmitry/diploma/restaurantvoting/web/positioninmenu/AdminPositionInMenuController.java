@@ -21,8 +21,8 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.Validati
 @AllArgsConstructor
 public class AdminPositionInMenuController {
     static final String REST_URL = "/api/admin/menu items";
-    protected PositionInMenuService positionInMenuService;
-    protected PositionInMenuRepository positionInMenuRepository;
+    private final PositionInMenuService positionInMenuService;
+    private final PositionInMenuRepository positionInMenuRepository;
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -21,10 +21,9 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class RestaurantService {
 
-    protected RestaurantRepository restaurantRepository;
-    protected PositionInMenuRepository positionInMenuRepository;
-
-    protected VoteRepository voteRepository;
+    protected final RestaurantRepository restaurantRepository;
+    protected final PositionInMenuRepository positionInMenuRepository;
+    protected final VoteRepository voteRepository;
 
     public Map<LocalDate, RestaurantTo> getWithMenuItems(int id, LocalDate date) {
         date = RestaurantUtil.checkDateMenuItems(date);

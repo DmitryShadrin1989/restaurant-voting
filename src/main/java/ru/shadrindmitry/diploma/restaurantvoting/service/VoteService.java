@@ -16,11 +16,10 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class VoteService {
-    protected VoteRepository voteRepository;
 
-    protected UserRepository userRepository;
-
-    protected RestaurantRepository restaurantRepository;
+    protected final VoteRepository voteRepository;
+    protected final UserRepository userRepository;
+    protected final RestaurantRepository restaurantRepository;
 
     public List<Vote> getUserVotes(int userId, LocalDate date) {
         return (date != null)?voteRepository.getOnDateForUser(userId, date):voteRepository.getAllForUser(userId);
