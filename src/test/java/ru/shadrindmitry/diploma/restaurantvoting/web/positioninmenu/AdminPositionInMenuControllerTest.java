@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.web.positionInMenu;
+package ru.shadrindmitry.diploma.restaurantvoting.web.positioninmenu;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,8 @@ import ru.shadrindmitry.diploma.restaurantvoting.web.AbstractControllerTest;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.shadrindmitry.diploma.restaurantvoting.web.positionInMenu.PositionInMenuTestData.POSITION_IN_MENU_1_ID;
-import static ru.shadrindmitry.diploma.restaurantvoting.web.positionInMenu.PositionInMenuTestData.POSITION_IN_MENU_MATCHER;
+import static ru.shadrindmitry.diploma.restaurantvoting.web.positioninmenu.PositionInMenuTestData.POSITION_IN_MENU_1_ID;
+import static ru.shadrindmitry.diploma.restaurantvoting.web.positioninmenu.PositionInMenuTestData.POSITION_IN_MENU_MATCHER;
 import static ru.shadrindmitry.diploma.restaurantvoting.web.user.UserTestData.ADMIN_MAIL;
 
 public class AdminPositionInMenuControllerTest extends AbstractControllerTest {

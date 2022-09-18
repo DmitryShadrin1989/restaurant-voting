@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.web.positionInMenu;
+package ru.shadrindmitry.diploma.restaurantvoting.web.positioninmenu;
 
 import ru.shadrindmitry.diploma.restaurantvoting.model.PositionInMenu;
 import ru.shadrindmitry.diploma.restaurantvoting.to.PositionInMenuTo;

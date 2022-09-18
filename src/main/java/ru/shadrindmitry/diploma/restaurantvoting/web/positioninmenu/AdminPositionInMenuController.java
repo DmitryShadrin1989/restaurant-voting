@@ -1,4 +1,4 @@
-package ru.shadrindmitry.diploma.restaurantvoting.web.positionInMenu;
+package ru.shadrindmitry.diploma.restaurantvoting.web.positioninmenu;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
