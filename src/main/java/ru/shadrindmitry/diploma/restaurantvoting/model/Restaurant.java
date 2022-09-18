@@ -25,7 +25,7 @@ public class Restaurant extends BaseEntity{
     @NoHtml
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     @OrderBy("date DESC")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
