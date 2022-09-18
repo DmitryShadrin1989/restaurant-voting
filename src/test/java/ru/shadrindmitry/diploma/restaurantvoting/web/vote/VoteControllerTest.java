@@ -50,7 +50,7 @@ public class VoteControllerTest extends AbstractControllerTest {
                 .param("date", "2022-01-01"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(RESTAURANT_RATING_MATCHER.contentJson(restaurantRating1, restaurantRating2));
+                .andExpect(RESTAURANT_RATING_MATCHER.contentJson(RESTAURANT_RATING_TO_1, RESTAURANT_RATING_TO_2));
     }
 
     @Test

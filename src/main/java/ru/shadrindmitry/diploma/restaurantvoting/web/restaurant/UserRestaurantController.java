@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Restaurant;
-import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
+import ru.shadrindmitry.diploma.restaurantvoting.to.RestaurantRatingTo;
 import ru.shadrindmitry.diploma.restaurantvoting.to.RestaurantTo;
 
 import java.time.LocalDate;
@@ -46,7 +46,7 @@ public class UserRestaurantController extends AbstractRestaurantController {
     }
 
     @GetMapping("/rating")
-    public Map<LocalDate, List<RestaurantRating>> getRestaurantRating(
+    public Map<LocalDate, List<RestaurantRatingTo>> getRestaurantRating(
             @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         log.info("getRestaurantRating on date {}", date);
         return service.getRestaurantRating(date);

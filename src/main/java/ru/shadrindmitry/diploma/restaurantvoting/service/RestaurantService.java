@@ -2,11 +2,11 @@ package ru.shadrindmitry.diploma.restaurantvoting.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.PositionInMenuRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.VoteRepository;
+import ru.shadrindmitry.diploma.restaurantvoting.to.RestaurantRatingTo;
 import ru.shadrindmitry.diploma.restaurantvoting.to.RestaurantTo;
 import ru.shadrindmitry.diploma.restaurantvoting.util.RestaurantUtil;
 
@@ -40,20 +40,20 @@ public class RestaurantService {
                 RestaurantUtil.getTos(positionInMenuRepository.getAllOnDate(date)));
     }
 
-    public Map<LocalDate, List<RestaurantRating>> getRestaurantRating(LocalDate date) {
+    public Map<LocalDate, List<RestaurantRatingTo>> getRestaurantRating(LocalDate date) {
         List<Vote> votes = (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
         Map<LocalDate, List<Vote>> dateListMap = votes.stream()
                 .collect(
                         Collectors.groupingBy(Vote::getDateVote));
 
-        Map<LocalDate, List<RestaurantRating>> result  = new HashMap<>();
+        Map<LocalDate, List<RestaurantRatingTo>> result  = new HashMap<>();
         for (Map.Entry<LocalDate, List<Vote>> entry: dateListMap.entrySet()) {
-            List<RestaurantRating> restaurantRatings = entry.getValue().stream()
+            List<RestaurantRatingTo> restaurantRatingTos = entry.getValue().stream()
                     .collect(
                             Collectors.groupingBy(Vote::getRestaurant, Collectors.summingInt(Vote -> 1)))
                     .entrySet().stream()
-                    .map(restaurantMap -> new RestaurantRating(restaurantMap.getKey(), restaurantMap.getValue())).toList();
-            result.put(entry.getKey(), restaurantRatings);
+                    .map(restaurantMap -> new RestaurantRatingTo(restaurantMap.getKey(), restaurantMap.getValue())).toList();
+            result.put(entry.getKey(), restaurantRatingTos);
         }
         return result;
     }

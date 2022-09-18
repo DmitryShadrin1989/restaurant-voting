@@ -1,7 +1,7 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web.vote;
 
-import ru.shadrindmitry.diploma.restaurantvoting.model.RestaurantRating;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
+import ru.shadrindmitry.diploma.restaurantvoting.to.RestaurantRatingTo;
 import ru.shadrindmitry.diploma.restaurantvoting.web.MatcherFactory;
 
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.web.user.UserTestData.*;
 public class VoteTestData {
 
     public static final MatcherFactory.Matcher<Vote> VOTE_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Vote.class, "user", "restaurant");
-    public static final MatcherFactory.Matcher<RestaurantRating> RESTAURANT_RATING_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(RestaurantRating.class);
+    public static final MatcherFactory.Matcher<RestaurantRatingTo> RESTAURANT_RATING_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(RestaurantRatingTo.class);
 
     public static final LocalDate DATE_TOMORROW = LocalDate.now().plusDays(1);
 
@@ -33,6 +33,6 @@ public class VoteTestData {
 
     public static final Vote voteForTomorrow = new Vote(VOTE_FOR_TOMORROW_ID, DATE_TOMORROW, user1, restaurant1);
 
-    public static final RestaurantRating restaurantRating1 = new RestaurantRating(restaurant1, 1);
-    public static final RestaurantRating restaurantRating2 = new RestaurantRating(restaurant2, 2);
+    public static final RestaurantRatingTo RESTAURANT_RATING_TO_1 = new RestaurantRatingTo(restaurant1, 1);
+    public static final RestaurantRatingTo RESTAURANT_RATING_TO_2 = new RestaurantRatingTo(restaurant2, 2);
 }
