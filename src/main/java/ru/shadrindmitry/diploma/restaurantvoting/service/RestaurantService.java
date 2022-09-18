@@ -2,6 +2,7 @@ package ru.shadrindmitry.diploma.restaurantvoting.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.PositionInMenuRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository;
@@ -39,6 +40,7 @@ public class RestaurantService {
                 RestaurantUtil.getTos(positionInMenuRepository.getAllOnDate(date)));
     }
 
+    @Transactional
     public Map<LocalDate, List<RestaurantRatingTo>> getRestaurantRating(LocalDate date) {
         List<Vote> votes = (date != null)?voteRepository.getAllOnDate(date):voteRepository.getAll();
         Map<LocalDate, List<Vote>> dateListMap = votes.stream()

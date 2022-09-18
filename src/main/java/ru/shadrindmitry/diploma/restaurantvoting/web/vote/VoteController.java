@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ru.shadrindmitry.diploma.restaurantvoting.service.VoteService;
 import ru.shadrindmitry.diploma.restaurantvoting.to.VoteTo;
@@ -23,6 +24,7 @@ public class VoteController {
     private final VoteService voteService;
 
     @GetMapping
+    @Transactional
     public List<VoteTo> getUserVotes(
             @AuthenticationPrincipal AuthUser authUser,
             @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
