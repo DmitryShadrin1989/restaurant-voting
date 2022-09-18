@@ -23,12 +23,12 @@ public class VoteService {
     protected RestaurantRepository restaurantRepository;
 
     public List<Vote> getUserVotes(int userId, LocalDate date) {
-        return (date != null)?voteRepository.getUserVoteOnDate(userId, date):voteRepository.getAllUserVotes(userId);
+        return (date != null)?voteRepository.getOnDateForUser(userId, date):voteRepository.getAllForUser(userId);
     }
 
     public Vote create(int userId, int restaurantId) {
         LocalDate today = LocalDate.now();
-        if (!voteRepository.getUserVoteOnDate(userId, today).isEmpty()) {
+        if (!voteRepository.getOnDateForUser(userId, today).isEmpty()) {
             throw new IllegalRequestDataException("Today, a user with id =" + userId + " has already spoken");
         }
         return voteRepository.save(new Vote(today,
@@ -39,7 +39,7 @@ public class VoteService {
     public void prepareAndSave(int userId, int restaurantId) {
         ValidationUtil.checkTimeOfVoting();
         LocalDate today = LocalDate.now();
-        List<Vote> votes = voteRepository.getUserVoteOnDate(userId, today);
+        List<Vote> votes = voteRepository.getOnDateForUser(userId, today);
         Restaurant restaurant = restaurantRepository.getExisted(restaurantId);
         if (!votes.isEmpty()) {
             Vote vote  = votes.get(0);

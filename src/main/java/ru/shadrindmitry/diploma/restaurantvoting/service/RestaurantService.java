@@ -31,13 +31,13 @@ public class RestaurantService {
         return Collections.singletonMap(date,
                 RestaurantUtil.createTo(
                         restaurantRepository.getExisted(id),
-                        positionInMenuRepository.getRestaurantMenuItems(id, date)));
+                        positionInMenuRepository.getOnDateForRestaurant(id, date)));
     }
 
     public Map<LocalDate, List<RestaurantTo>> getAllWithMenuItems(LocalDate date) {
         date = RestaurantUtil.checkDateMenuItems(date);
         return Collections.singletonMap(date,
-                RestaurantUtil.getTos(positionInMenuRepository.getAllRestaurantMenuItems(date)));
+                RestaurantUtil.getTos(positionInMenuRepository.getAllOnDate(date)));
     }
 
     public Map<LocalDate, List<RestaurantRating>> getRestaurantRating(LocalDate date) {

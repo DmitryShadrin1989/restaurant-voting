@@ -12,10 +12,10 @@ import java.util.List;
 public interface VoteRepository extends JpaRepository<Vote, Integer> {
 
     @Query("SELECT v FROM Vote v WHERE v.user.id = :userId ORDER BY v.dateVote DESC")
-    List<Vote> getAllUserVotes(int userId);
+    List<Vote> getAllForUser(int userId);
 
     @Query("SELECT v FROM Vote v WHERE v.user.id = :userId AND v.dateVote = :date")
-    List<Vote> getUserVoteOnDate(int userId, LocalDate date);
+    List<Vote> getOnDateForUser(int userId, LocalDate date);
 
     @Query("SELECT v FROM Vote v WHERE v.dateVote = :date ORDER BY v.dateVote DESC")
     List<Vote> getAllOnDate(LocalDate date);

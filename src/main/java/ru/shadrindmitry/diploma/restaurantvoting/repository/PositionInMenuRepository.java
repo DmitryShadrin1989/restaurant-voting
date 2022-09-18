@@ -11,9 +11,9 @@ import java.util.List;
 public interface PositionInMenuRepository extends BaseRepository<PositionInMenu> {
 
     @Query("SELECT p FROM PositionInMenu p WHERE p.restaurant.id = :restaurant_id AND p.date = :date")
-    List<PositionInMenu> getRestaurantMenuItems(int restaurant_id, LocalDate date);
+    List<PositionInMenu> getOnDateForRestaurant(int restaurant_id, LocalDate date);
 
     @Query("SELECT p FROM PositionInMenu p WHERE p.date = :date")
-    List<PositionInMenu> getAllRestaurantMenuItems(LocalDate date);
+    List<PositionInMenu> getAllOnDate(LocalDate date);
 
 }
