@@ -37,8 +37,8 @@ Registered administrators can:
 - create, receive and delete users.
 
 Any user (anonymous and logged in) can:
-- get a list of restaurants with a rating >= 0 for the current day;
 - get a rating of restaurants on the selected date;
+- get restaurant ratings for the entire period (broken down by dates);
 
 Registered users can:
 - Vote for the restaurant and cancel/change their vote before 11:00 am of the current day.
