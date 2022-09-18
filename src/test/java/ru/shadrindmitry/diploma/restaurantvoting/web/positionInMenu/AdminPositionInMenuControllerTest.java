@@ -8,9 +8,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ru.shadrindmitry.diploma.restaurantvoting.model.PositionInMenu;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.PositionInMenuRepository;
-import ru.shadrindmitry.diploma.restaurantvoting.to.PositionInMenuTo;
 import ru.shadrindmitry.diploma.restaurantvoting.util.JsonUtil;
-import ru.shadrindmitry.diploma.restaurantvoting.util.PositionInMenuUtil;
 import ru.shadrindmitry.diploma.restaurantvoting.web.AbstractControllerTest;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -36,18 +34,18 @@ public class AdminPositionInMenuControllerTest extends AbstractControllerTest {
         assertFalse(positionInMenuRepository.findById(POSITION_IN_MENU_1_ID).isPresent());
     }
 
-    @Test
-    @WithUserDetails(value = ADMIN_MAIL)
-    void update() throws Exception {
-        PositionInMenuTo updated = PositionInMenuTestData.getUpdated();
-        perform(MockMvcRequestBuilders.put(REST_URL + POSITION_IN_MENU_1_ID)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(updated)))
-                .andExpect(status().isNoContent());
-
-        POSITION_IN_MENU_MATCHER.assertMatch(positionInMenuRepository.getExisted(POSITION_IN_MENU_1_ID),
-                PositionInMenuUtil.createFromTo(updated));
-    }
+//    @Test
+//    @WithUserDetails(value = ADMIN_MAIL)
+//    void update() throws Exception {
+//        PositionInMenuTo updated = PositionInMenuTestData.getUpdated();
+//        perform(MockMvcRequestBuilders.put(REST_URL + POSITION_IN_MENU_1_ID)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(JsonUtil.writeValue(updated)))
+//                .andExpect(status().isNoContent());
+//
+//        POSITION_IN_MENU_MATCHER.assertMatch(positionInMenuRepository.getExisted(POSITION_IN_MENU_1_ID),
+//                PositionInMenuUtil.createFromTo(updated));
+//    }
 
 
     @Test

@@ -13,7 +13,6 @@ public class PositionInMenuUtil {
 
     public static void updateEntity(PositionInMenu positionInMenu, PositionInMenu updatePositionInMenu) {
         positionInMenu.setDate(updatePositionInMenu.getDate());
-        positionInMenu.setPositionType(updatePositionInMenu.getPositionType());
         positionInMenu.setDescription(updatePositionInMenu.getDescription());
         positionInMenu.setPrice(updatePositionInMenu.getPrice());
     }
@@ -28,16 +27,14 @@ public class PositionInMenuUtil {
         return new PositionInMenuTo(positionInMenu.id(),
                 positionInMenu.getDate(),
                 positionInMenu.getDescription(),
-                positionInMenu.getPositionType(),
                 positionInMenu.getPrice());
     }
 
-    public static PositionInMenu createFromTo(PositionInMenuTo positionInMenuTo) {
-        return new PositionInMenu(positionInMenuTo.id(),
-                positionInMenuTo.getDate(),
-                positionInMenuTo.getDescription(),
-                positionInMenuTo.getPositionType(),
-                positionInMenuTo.getPrice(),
-                null);
-    }
+//    public static PositionInMenu createFromTo(PositionInMenuTo positionInMenuTo) {
+//        return new PositionInMenu(positionInMenuTo.id(),
+//                positionInMenuTo.getDate(),
+//                positionInMenuTo.getDescription(),
+//                positionInMenuTo.getPrice(),
+//                null);
+//    }
 }

@@ -56,7 +56,7 @@ public class VoteControllerTest extends AbstractControllerTest {
     @Test
     @WithUserDetails(value = USER1_MAIL)
     void delete() throws Exception {
-        voteService.createUpdate(DATE_TOMORROW, USER1_ID, RESTAURANT1_ID);
+        voteService.create(USER1_ID, RESTAURANT1_ID);
         perform(MockMvcRequestBuilders.delete(REST_URL)
                 .param("date", DATE_TOMORROW.toString()))
                 .andExpect(status().isNoContent());

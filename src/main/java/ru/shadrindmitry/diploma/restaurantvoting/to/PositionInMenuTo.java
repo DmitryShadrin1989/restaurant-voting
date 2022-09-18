@@ -2,7 +2,6 @@ package ru.shadrindmitry.diploma.restaurantvoting.to;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
-import ru.shadrindmitry.diploma.restaurantvoting.model.PositionType;
 
 import java.time.LocalDate;
 
@@ -11,22 +10,18 @@ import java.time.LocalDate;
 public class PositionInMenuTo extends BaseTo {
 
     //@JsonIgnore
-    LocalDate date;
+    //LocalDate date;
 
     String description;
-
-    PositionType positionType;
 
     Double price;
 
 
 
-    public PositionInMenuTo(Integer id, LocalDate date, String description,
-                            PositionType positionType, Double price) {
+    public PositionInMenuTo(Integer id, LocalDate date, String description, Double price) {
         super(id);
-        this.date = date;
+        //this.date = date;
         this.description = description;
-        this.positionType = positionType;
         this.price = price;
     }
 }

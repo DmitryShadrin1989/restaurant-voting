@@ -26,11 +26,6 @@ public class PositionInMenu extends BaseEntity {
     @Size(min = 2, max = 120)
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "position_type", nullable = false)
-    @NotNull
-    private PositionType positionType;
-
     @Column(name = "price", nullable = false)
     @NotNull
     private Double price;
@@ -40,19 +35,17 @@ public class PositionInMenu extends BaseEntity {
     @JsonIgnore
     private Restaurant restaurant;
 
-    public PositionInMenu(LocalDate date, String description, PositionType positionType, Double price, Restaurant restaurant) {
+    public PositionInMenu(LocalDate date, String description, Double price, Restaurant restaurant) {
         this.date = date;
         this.description = description;
-        this.positionType = positionType;
         this.price = price;
         this.restaurant = restaurant;
     }
 
-    public PositionInMenu(Integer id, LocalDate date, String description, PositionType positionType, Double price, Restaurant restaurant) {
+    public PositionInMenu(Integer id, LocalDate date, String description, Double price, Restaurant restaurant) {
         super(id);
         this.date = date;
         this.description = description;
-        this.positionType = positionType;
         this.price = price;
         this.restaurant = restaurant;
     }
