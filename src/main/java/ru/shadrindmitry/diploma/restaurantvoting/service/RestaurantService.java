@@ -26,6 +26,7 @@ public class RestaurantService {
     protected final PositionInMenuRepository positionInMenuRepository;
     protected final VoteRepository voteRepository;
 
+    @Transactional
     public Map<LocalDate, RestaurantTo> getWithMenuItems(int id, LocalDate date) {
         date = RestaurantUtil.checkDateMenuItems(date);
         return Collections.singletonMap(date,
@@ -34,6 +35,7 @@ public class RestaurantService {
                         positionInMenuRepository.getOnDateForRestaurant(id, date)));
     }
 
+    @Transactional
     public Map<LocalDate, List<RestaurantTo>> getAllWithMenuItems(LocalDate date) {
         date = RestaurantUtil.checkDateMenuItems(date);
         return Collections.singletonMap(date,

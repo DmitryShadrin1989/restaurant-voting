@@ -2,6 +2,7 @@ package ru.shadrindmitry.diploma.restaurantvoting.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.shadrindmitry.diploma.restaurantvoting.model.PositionInMenu;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.PositionInMenuRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository;
@@ -20,6 +21,7 @@ public class PositionInMenuService {
         positionInMenuRepository.save(positionInMenu);
     }
 
+    @Transactional
     public PositionInMenu create(PositionInMenu positionInMenu, int restaurant_id) {
         positionInMenu.setRestaurant(restaurantRepository.getExisted(restaurant_id));
         return positionInMenuRepository.save(positionInMenu);
