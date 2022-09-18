@@ -1,6 +1,5 @@
 package ru.shadrindmitry.diploma.restaurantvoting.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,7 +18,7 @@ public class PositionInMenu extends BaseEntity {
 
     @Column(name = "date_menu_item", nullable = false)
     @NotNull
-    private LocalDate date;
+    private LocalDate dateMenuItem;
 
     @Column(name = "description", nullable = false)
     @NotBlank
@@ -32,19 +31,19 @@ public class PositionInMenu extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
-    @JsonIgnore
+    @ToString.Exclude
     private Restaurant restaurant;
 
-    public PositionInMenu(LocalDate date, String description, Double price, Restaurant restaurant) {
-        this.date = date;
+    public PositionInMenu(LocalDate dateMenuItem, String description, Double price, Restaurant restaurant) {
+        this.dateMenuItem = dateMenuItem;
         this.description = description;
         this.price = price;
         this.restaurant = restaurant;
     }
 
-    public PositionInMenu(Integer id, LocalDate date, String description, Double price, Restaurant restaurant) {
+    public PositionInMenu(Integer id, LocalDate dateMenuItem, String description, Double price, Restaurant restaurant) {
         super(id);
-        this.date = date;
+        this.dateMenuItem = dateMenuItem;
         this.description = description;
         this.price = price;
         this.restaurant = restaurant;

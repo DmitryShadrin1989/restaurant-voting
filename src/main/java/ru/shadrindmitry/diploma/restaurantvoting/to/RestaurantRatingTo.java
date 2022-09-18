@@ -7,7 +7,7 @@ import ru.shadrindmitry.diploma.restaurantvoting.model.Restaurant;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@ToString(callSuper = true)
+@ToString(callSuper = true, exclude = {"restaurant"})
 public class RestaurantRatingTo {
 
     public Restaurant restaurant;

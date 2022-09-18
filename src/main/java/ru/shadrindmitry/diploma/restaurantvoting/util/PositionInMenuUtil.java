@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class PositionInMenuUtil {
 
     public static void updateEntity(PositionInMenu positionInMenu, PositionInMenu updatePositionInMenu) {
-        positionInMenu.setDate(updatePositionInMenu.getDate());
+        positionInMenu.setDateMenuItem(updatePositionInMenu.getDateMenuItem());
         positionInMenu.setDescription(updatePositionInMenu.getDescription());
         positionInMenu.setPrice(updatePositionInMenu.getPrice());
     }
@@ -25,7 +25,6 @@ public class PositionInMenuUtil {
 
     public static PositionInMenuTo createTo(PositionInMenu positionInMenu) {
         return new PositionInMenuTo(positionInMenu.id(),
-                positionInMenu.getDate(),
                 positionInMenu.getDescription(),
                 positionInMenu.getPrice());
     }

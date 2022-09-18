@@ -29,6 +29,7 @@ public class Restaurant extends BaseEntity{
     @OrderBy("date DESC")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
+    @ToString.Exclude
     private List<PositionInMenu> menu;
 
     public Restaurant(Integer id, String name, List<PositionInMenu> menu) {
