@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @UtilityClass
 public class ValidationUtil {
-    public static final LocalTime restrictionOfVotingByTime = LocalTime.parse("11:00");
+    public static final LocalTime restrictionOfVotingByTime = LocalTime.parse("15:00");
 
     public static void checkNew(HasId bean) {
         if (!bean.isNew()) {
@@ -31,13 +31,14 @@ public class ValidationUtil {
             throw new IllegalRequestDataException("Entity with id=" + id + " not found");
         }
     }
+
     public static <T> T checkExisted(T obj, int id) {
         if (obj == null) {
             throw new IllegalRequestDataException("Entity with id=" + id + " not found");
         }
         return obj;
     }
-    
+
     @NonNull
     public static Throwable getRootCause(@NonNull Throwable t) {
         Throwable rootCause = NestedExceptionUtils.getRootCause(t);
@@ -45,7 +46,7 @@ public class ValidationUtil {
     }
 
     public static void checkTimeOfVoting() {
-        if(LocalTime.now().isAfter(restrictionOfVotingByTime)) {
+        if (LocalTime.now().isAfter(restrictionOfVotingByTime)) {
             throw new IllegalRequestDataException("You can change your voice before " + restrictionOfVotingByTime);
         }
     }

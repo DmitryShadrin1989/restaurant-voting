@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.shadrindmitry.diploma.restaurantvoting.model.PositionInMenu;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.PositionInMenuRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.RestaurantRepository;
+import ru.shadrindmitry.diploma.restaurantvoting.to.PositionInMenuTo;
 import ru.shadrindmitry.diploma.restaurantvoting.util.PositionInMenuUtil;
 
 @Service
@@ -15,15 +16,17 @@ public class PositionInMenuService {
     protected final PositionInMenuRepository positionInMenuRepository;
     protected final RestaurantRepository restaurantRepository;
 
-    public void update(PositionInMenu updatePositionInMenu, int id) {
-        PositionInMenu positionInMenu = positionInMenuRepository.getExisted(id);
-        PositionInMenuUtil.updateEntity(positionInMenu, updatePositionInMenu);
-        positionInMenuRepository.save(positionInMenu);
+    @Transactional
+    public void update(PositionInMenuTo positionInMenuTo) {
+        PositionInMenu updatePositionInMenu = PositionInMenuUtil.createFromTo(positionInMenuTo);
+        updatePositionInMenu.setRestaurant(restaurantRepository.getReferenceById(positionInMenuTo.getRestaurantId()));
+        positionInMenuRepository.save(updatePositionInMenu);
     }
 
     @Transactional
-    public PositionInMenu create(PositionInMenu positionInMenu, int restaurant_id) {
-        positionInMenu.setRestaurant(restaurantRepository.getExisted(restaurant_id));
-        return positionInMenuRepository.save(positionInMenu);
+    public PositionInMenu create(PositionInMenuTo positionInMenuTo) {
+        PositionInMenu createPositionInMenu = PositionInMenuUtil.createFromTo(positionInMenuTo);
+        createPositionInMenu.setRestaurant(restaurantRepository.getReferenceById(positionInMenuTo.getRestaurantId()));
+        return positionInMenuRepository.save(createPositionInMenu);
     }
 }

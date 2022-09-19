@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.shadrindmitry.diploma.restaurantvoting.model.PositionInMenu;
 import ru.shadrindmitry.diploma.restaurantvoting.repository.PositionInMenuRepository;
 import ru.shadrindmitry.diploma.restaurantvoting.service.PositionInMenuService;
+import ru.shadrindmitry.diploma.restaurantvoting.to.PositionInMenuTo;
 
 import java.net.URI;
 
@@ -20,6 +21,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.util.validation.Validati
 @Slf4j
 @AllArgsConstructor
 public class AdminPositionInMenuController {
+
     static final String REST_URL = "/api/admin/menu items";
     private final PositionInMenuService positionInMenuService;
     private final PositionInMenuRepository positionInMenuRepository;
@@ -34,18 +36,17 @@ public class AdminPositionInMenuController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable int id,
-                       @RequestBody PositionInMenu positionInMenu) {
+                       @RequestBody PositionInMenuTo positionInMenuTo) {
         log.info("update PositionInMenu {}", id);
-        assureIdConsistent(positionInMenu, id);
-        positionInMenuService.update(positionInMenu, id);
+        assureIdConsistent(positionInMenuTo, id);
+        positionInMenuService.update(positionInMenuTo);
     }
 
     @PostMapping
-    public ResponseEntity<PositionInMenu> create(@RequestParam int restaurant_id,
-                                                 @RequestBody PositionInMenu positionInMenu) {
-        log.info("create PositionInMenu for Restaurant {}", restaurant_id);
-        checkNew(positionInMenu);
-        PositionInMenu created = positionInMenuService.create(positionInMenu, restaurant_id);
+    public ResponseEntity<PositionInMenu> create(@RequestBody PositionInMenuTo positionInMenuTo) {
+        log.info("create PositionInMenu");
+        checkNew(positionInMenuTo);
+        PositionInMenu created = positionInMenuService.create(positionInMenuTo);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();

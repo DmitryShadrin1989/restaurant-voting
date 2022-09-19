@@ -25,15 +25,22 @@ public class PositionInMenuUtil {
 
     public static PositionInMenuTo createTo(PositionInMenu positionInMenu) {
         return new PositionInMenuTo(positionInMenu.id(),
-                positionInMenu.getDescription(),
-                positionInMenu.getPrice());
+                positionInMenu.getDateMenuItem(), positionInMenu.getDescription(),
+                positionInMenu.getPrice(), positionInMenu.getRestaurant().id());
     }
 
-//    public static PositionInMenu createFromTo(PositionInMenuTo positionInMenuTo) {
-//        return new PositionInMenu(positionInMenuTo.id(),
-//                positionInMenuTo.getDate(),
-//                positionInMenuTo.getDescription(),
-//                positionInMenuTo.getPrice(),
-//                null);
-//    }
+    public static PositionInMenu createFromTo(PositionInMenuTo positionInMenuTo) {
+        if (positionInMenuTo.isNew()) {
+            return new PositionInMenu(positionInMenuTo.getDateMenuItems(),
+                    positionInMenuTo.getDescription(),
+                    positionInMenuTo.getPrice(),
+                    null);
+        } else {
+            return new PositionInMenu(positionInMenuTo.id(),
+                    positionInMenuTo.getDateMenuItems(),
+                    positionInMenuTo.getDescription(),
+                    positionInMenuTo.getPrice(),
+                    null);
+        }
+    }
 }

@@ -46,7 +46,7 @@ public class PositionInMenuTestData {
             "Компот", 35, restaurant1);
 
     public static PositionInMenuTo getUpdated() {
-        return new PositionInMenuTo(POSITION_IN_MENU_1_ID, "Обновленный Винегрет", 160);
+        return new PositionInMenuTo(POSITION_IN_MENU_1_ID, LocalDate.of(2022, 1, 1), "Обновленный Винегрет", 160, restaurant1.id());
     }
 
     public static PositionInMenu getNew() {
