@@ -27,21 +27,21 @@ public class PositionInMenu extends BaseEntity {
 
     @Column(name = "price", nullable = false)
     @NotNull
-    private Double price;
+    private int price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     @ToString.Exclude
     private Restaurant restaurant;
 
-    public PositionInMenu(LocalDate dateMenuItem, String description, Double price, Restaurant restaurant) {
+    public PositionInMenu(LocalDate dateMenuItem, String description, int price, Restaurant restaurant) {
         this.dateMenuItem = dateMenuItem;
         this.description = description;
         this.price = price;
         this.restaurant = restaurant;
     }
 
-    public PositionInMenu(Integer id, LocalDate dateMenuItem, String description, Double price, Restaurant restaurant) {
+    public PositionInMenu(Integer id, LocalDate dateMenuItem, String description, int price, Restaurant restaurant) {
         super(id);
         this.dateMenuItem = dateMenuItem;
         this.description = description;

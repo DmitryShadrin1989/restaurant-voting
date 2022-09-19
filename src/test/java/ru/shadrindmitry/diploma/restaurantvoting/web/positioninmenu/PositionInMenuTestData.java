@@ -25,32 +25,32 @@ public class PositionInMenuTestData {
     public static final int POSITION_IN_MENU_10_ID = 20;
 
     public static final PositionInMenu positionInMenu1 = new PositionInMenu(POSITION_IN_MENU_1_ID, LocalDate.of(2022, 1, 1),
-            "Винегрет", 150d, restaurant1);
+            "Винегрет", 150, restaurant1);
     public static final PositionInMenu positionInMenu2 = new PositionInMenu(POSITION_IN_MENU_2_ID, LocalDate.of(2022, 1, 1),
-            "Борщ", 200d, restaurant1);
+            "Борщ", 200, restaurant1);
     public static final PositionInMenu positionInMenu3 = new PositionInMenu(POSITION_IN_MENU_3_ID, LocalDate.of(2022, 1, 1),
-            "Картофельное пюре", 130d, restaurant1);
+            "Картофельное пюре", 130, restaurant1);
     public static final PositionInMenu positionInMenu4 = new PositionInMenu(POSITION_IN_MENU_4_ID, LocalDate.of(2022, 1, 1),
-            "Котлета по Киевски", 190d, restaurant1);
+            "Котлета по Киевски", 190, restaurant1);
     public static final PositionInMenu positionInMenu5 = new PositionInMenu(POSITION_IN_MENU_5_ID, LocalDate.of(2022, 1, 1),
-            "Компот", 30d, restaurant1);
+            "Компот", 30, restaurant1);
     public static final PositionInMenu positionInMenu6 = new PositionInMenu(POSITION_IN_MENU_6_ID, LocalDate.of(2022, 1, 2),
-            "Сельдь под шубой", 200d, restaurant1);
+            "Сельдь под шубой", 200, restaurant1);
     public static final PositionInMenu positionInMenu7 = new PositionInMenu(POSITION_IN_MENU_7_ID, LocalDate.of(2022, 1, 2),
-            "Борщ", 190d, restaurant1);
+            "Борщ", 190, restaurant1);
     public static final PositionInMenu positionInMenu8 = new PositionInMenu(POSITION_IN_MENU_8_ID, LocalDate.of(2022, 1, 2),
-            "Картофельное пюре", 170d, restaurant1);
+            "Картофельное пюре", 170, restaurant1);
     public static final PositionInMenu positionInMenu9 = new PositionInMenu(POSITION_IN_MENU_9_ID, LocalDate.of(2022, 1, 2),
-            "Шашлык из курицы", 300d, restaurant1);
+            "Шашлык из курицы", 300, restaurant1);
     public static final PositionInMenu positionInMenu10 = new PositionInMenu(POSITION_IN_MENU_10_ID, LocalDate.of(2022, 1, 2),
-            "Компот", 35d, restaurant1);
+            "Компот", 35, restaurant1);
 
     public static PositionInMenuTo getUpdated() {
-        return new PositionInMenuTo(POSITION_IN_MENU_1_ID, "Обновленный Винегрет", 160d);
+        return new PositionInMenuTo(POSITION_IN_MENU_1_ID, "Обновленный Винегрет", 160);
     }
 
     public static PositionInMenu getNew() {
         return new PositionInMenu(LocalDate.of(2022, 1, 3),
-                "Новая позиция в меню", 220d, restaurant1);
+                "Новая позиция в меню", 220, restaurant1);
     }
 }
