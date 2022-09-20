@@ -55,7 +55,7 @@ public class User extends NamedEntity implements HasIdAndEmail, Serializable {
         this(u.id, u.name, u.email, u.password, u.roles);
     }
 
-    public User(Integer id, String name, String email, String password,  Role... roles) {
+    public User(Integer id, String name, String email, String password, Role... roles) {
         this(id, name, email, password, Arrays.asList(roles));
     }
 

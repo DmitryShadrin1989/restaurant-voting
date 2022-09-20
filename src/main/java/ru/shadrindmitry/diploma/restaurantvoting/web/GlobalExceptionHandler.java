@@ -1,4 +1,3 @@
-
 package ru.shadrindmitry.diploma.restaurantvoting.web;
 
 import lombok.AllArgsConstructor;

@@ -10,5 +10,4 @@ public class AdminPositionInMenuControllerTest extends AbstractControllerTest {
 
     @Autowired
     private PositionInMenuRepository positionInMenuRepository;
-
 }

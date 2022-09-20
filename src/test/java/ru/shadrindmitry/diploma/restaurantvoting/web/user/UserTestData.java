@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class UserTestData {
+
     public static final MatcherFactory.Matcher<User> USER_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(User.class, "password");
     public static final int USER1_ID = 1;
     public static final int USER2_ID = 2;
@@ -29,7 +30,7 @@ public class UserTestData {
     public static final User guest = new User(GUEST_ID, "Guest", GUEST_MAIL, "guest");
 
     public static User getNew() {
-        return new User(null, "New", "new@gmail.com", "newPass",  Collections.singleton(Role.USER));
+        return new User(null, "New", "new@gmail.com", "newPass", Collections.singleton(Role.USER));
     }
 
     public static User getUpdated() {

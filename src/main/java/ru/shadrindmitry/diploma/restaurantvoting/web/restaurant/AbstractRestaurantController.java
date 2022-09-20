@@ -12,5 +12,4 @@ public abstract class AbstractRestaurantController {
     protected RestaurantRepository repository;
     @Autowired
     protected RestaurantService service;
-
 }

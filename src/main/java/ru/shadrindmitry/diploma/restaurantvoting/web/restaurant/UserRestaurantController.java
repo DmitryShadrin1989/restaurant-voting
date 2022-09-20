@@ -22,7 +22,7 @@ public class UserRestaurantController extends AbstractRestaurantController {
 
     @GetMapping("/with menu items/{id}")
     public Map<LocalDate, RestaurantTo> getWithMenuItems(@PathVariable int id,
-                                        @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+                                                         @RequestParam @Nullable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         log.info("get Restaurant {} with menu items on date {}", id, date);
         return service.getWithMenuItems(id, date);
     }
@@ -41,7 +41,7 @@ public class UserRestaurantController extends AbstractRestaurantController {
     }
 
     @GetMapping
-    public List<Restaurant> getAll(){
+    public List<Restaurant> getAll() {
         log.info("getAll Restaurants");
         return repository.findAll(Sort.by("id"));
     }
@@ -52,5 +52,4 @@ public class UserRestaurantController extends AbstractRestaurantController {
         log.info("getRestaurantRating on date {}", date);
         return service.getRestaurantRating(date);
     }
-
 }

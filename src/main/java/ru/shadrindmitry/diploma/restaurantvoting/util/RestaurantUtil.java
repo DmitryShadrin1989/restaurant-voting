@@ -25,6 +25,6 @@ public class RestaurantUtil {
     }
 
     public static LocalDate checkDateMenuItems(LocalDate date) {
-        return (date!= null)?date : LocalDate.now();
+        return (date != null) ? date : LocalDate.now();
     }
 }

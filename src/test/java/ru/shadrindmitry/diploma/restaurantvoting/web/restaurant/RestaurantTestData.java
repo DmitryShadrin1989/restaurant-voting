@@ -24,5 +24,4 @@ public class RestaurantTestData {
     public static Restaurant getNew() {
         return new Restaurant(null, "Новый ресторан");
     }
-
 }

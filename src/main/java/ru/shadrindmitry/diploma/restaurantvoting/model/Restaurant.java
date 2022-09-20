@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(callSuper = true)
-public class Restaurant extends BaseEntity{
+public class Restaurant extends BaseEntity {
 
     @Column(name = "name", nullable = false, unique = true)
     @NotBlank
@@ -26,7 +26,7 @@ public class Restaurant extends BaseEntity{
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    @OrderBy("date DESC")
+    @OrderBy("dateMenuItem DESC")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     @ToString.Exclude

@@ -15,5 +15,4 @@ public interface PositionInMenuRepository extends BaseRepository<PositionInMenu>
 
     @Query("SELECT p FROM PositionInMenu p WHERE p.dateMenuItem = :date")
     List<PositionInMenu> getAllOnDate(LocalDate date);
-
 }
