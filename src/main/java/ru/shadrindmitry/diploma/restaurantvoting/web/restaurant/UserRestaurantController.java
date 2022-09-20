@@ -1,6 +1,7 @@
 package ru.shadrindmitry.diploma.restaurantvoting.web.restaurant;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
@@ -42,7 +43,7 @@ public class UserRestaurantController extends AbstractRestaurantController {
     @GetMapping
     public List<Restaurant> getAll(){
         log.info("getAll Restaurants");
-        return repository.findAll();
+        return repository.findAll(Sort.by("id"));
     }
 
     @GetMapping("/rating")

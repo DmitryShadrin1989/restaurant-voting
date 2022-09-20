@@ -2,6 +2,7 @@ package ru.shadrindmitry.diploma.restaurantvoting.web.vote;
 
 import ru.shadrindmitry.diploma.restaurantvoting.model.Vote;
 import ru.shadrindmitry.diploma.restaurantvoting.to.RestaurantRatingTo;
+import ru.shadrindmitry.diploma.restaurantvoting.to.VoteTo;
 import ru.shadrindmitry.diploma.restaurantvoting.web.MatcherFactory;
 
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import static ru.shadrindmitry.diploma.restaurantvoting.web.user.UserTestData.*;
 
 public class VoteTestData {
 
-    public static final MatcherFactory.Matcher<Vote> VOTE_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Vote.class, "user", "restaurant");
+    public static final MatcherFactory.Matcher<VoteTo> VOTE_TO_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(VoteTo.class);
     public static final MatcherFactory.Matcher<RestaurantRatingTo> RESTAURANT_RATING_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(RestaurantRatingTo.class);
 
     public static final LocalDate DATE_TOMORROW = LocalDate.now().plusDays(1);

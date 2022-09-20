@@ -49,8 +49,8 @@ public class PositionInMenuTestData {
         return new PositionInMenuTo(POSITION_IN_MENU_1_ID, LocalDate.of(2022, 1, 1), "Обновленный Винегрет", 160, restaurant1.id());
     }
 
-    public static PositionInMenu getNew() {
-        return new PositionInMenu(LocalDate.of(2022, 1, 3),
-                "Новая позиция в меню", 220, restaurant1);
+    public static PositionInMenuTo getNew() {
+        return new PositionInMenuTo(LocalDate.of(2022, 1, 3),
+                "Новая позиция в меню", 220, 1);
     }
 }

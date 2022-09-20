@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @UtilityClass
 public class ValidationUtil {
-    public static final LocalTime restrictionOfVotingByTime = LocalTime.parse("15:00");
+    public static final LocalTime restrictionOfVotingByTime = LocalTime.parse("11:00");
 
     public static void checkNew(HasId bean) {
         if (!bean.isNew()) {
